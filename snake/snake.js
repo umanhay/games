@@ -23,6 +23,20 @@ function Snake() {
     this.yspeed = y;
   }
 
+  this.death = function() {
+    // Loop through spots in tail
+    for (var i = 0; i < this.tail.length; i++) {
+      var pos = this.tail[i];
+      var d = dist(this.x, this.y, pos.x, pos.y);
+      // If collision, reset snake
+      if (d < 1) {
+        this.total = 0;
+        this.tail = [];
+      }
+    }
+
+  }
+
   this.update = function() {
     // If nothing has been eaten
     if (this.total === this.tail.length) {

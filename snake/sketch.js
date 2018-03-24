@@ -6,7 +6,7 @@ function setup() {
   createCanvas(600, 600);
   snake = new Snake();
   frameRate(10);
-  pickLocation();
+  pickLocation(); 
 }
 
 //make sure food is on the grid
@@ -21,13 +21,15 @@ function pickLocation () {
 
 function draw() {
   background('black');
-  snake.update();
-  snake.show();
 
-// If snake eats the food, pick a new location
+  // If snake eats the food, pick a new location
   if (snake.eat(food)) {
     pickLocation();
   }
+
+  snake.death();
+  snake.update();
+  snake.show();
 
   //food
   fill(255, 0, 100);
