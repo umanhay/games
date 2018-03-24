@@ -4,6 +4,17 @@ function Snake() {
   this.xspeed = 1;
   this.yspeed = 0;
 
+  this.eat = function(pos) {
+    // Check distance between where the snake is and where the food is.
+    var d = dist(this.x, this.y, pos.x, pos.y);
+    // If d is less than one pixel
+    if (d < 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   this.dir = function(x, y) {
     this.xspeed = x;
     this.yspeed = y;
